@@ -11,17 +11,22 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:      #0d1117;
-      --surface: #161b22;
-      --surface2:#21262d;
-      --border:  #30363d;
-      --text:    #e6edf3;
-      --muted:   #8b949e;
-      --blue:    #58a6ff;
-      --green:   #3fb950;
-      --purple:  #d2a8ff;
-      --orange:  #ffa657;
-      --red:     #ff7b72;
+      --bg:      #f8fafc;
+      --surface: #ffffff;
+      --surface2:#f1f5f9;
+      --border:  #e2e8f0;
+      --text:    #0f172a;
+      --muted:   #64748b;
+      --blue:    #2563eb;
+      --blue-l:  #dbeafe;
+      --green:   #16a34a;
+      --green-l: #dcfce7;
+      --purple:  #7c3aed;
+      --purple-l:#ede9fe;
+      --orange:  #ea580c;
+      --orange-l:#ffedd5;
+      --red:     #dc2626;
+      --red-l:   #fee2e2;
       --r:       12px;
     }
     html { scroll-behavior: smooth; }
@@ -36,7 +41,7 @@
     /* ── nav ── */
     nav {
       position: sticky; top: 0; z-index: 99;
-      background: rgba(13,17,23,.9); backdrop-filter: blur(10px);
+      background: rgba(248,250,252,.92); backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
@@ -53,20 +58,20 @@
 
     /* ── hero ── */
     .hero {
-      background: linear-gradient(160deg, #141a28 0%, #0d1117 55%);
+      background: linear-gradient(150deg, #eff6ff 0%, #f8fafc 50%, #f0fdf4 100%);
       padding: 5.5rem 1.5rem 4rem;
       border-bottom: 1px solid var(--border);
     }
     .hero-inner { max-width: 800px; margin: 0 auto; }
     .tag {
       display: inline-flex; align-items: center; gap: .35rem;
-      background: rgba(88,166,255,.1); border: 1px solid rgba(88,166,255,.25);
+      background: var(--blue-l); border: 1px solid #bfdbfe;
       color: var(--blue); font-size: .75rem; font-weight: 600; letter-spacing: .05em;
       padding: .28rem .75rem; border-radius: 20px; margin-bottom: 1.4rem;
     }
     h1 {
       font-size: clamp(1.9rem, 4.5vw, 3rem); font-weight: 800;
-      line-height: 1.2; letter-spacing: -.025em; margin-bottom: 1.8rem;
+      line-height: 1.2; letter-spacing: -.025em; margin-bottom: 1.8rem; color: var(--text);
     }
     h1 em { color: var(--blue); font-style: normal; }
 
@@ -74,7 +79,7 @@
     .authors { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .9rem; }
     .author {
       font-size: .87rem; font-weight: 500; color: var(--text);
-      background: var(--surface2); border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border);
       padding: .28rem .75rem; border-radius: 20px;
     }
     .sup { color: var(--blue); font-size: .7em; vertical-align: super; }
@@ -88,28 +93,26 @@
       font-size: .88rem; font-weight: 600; padding: .5rem 1.1rem;
       border-radius: 8px; transition: all .18s; cursor: pointer; border: none;
     }
-    .btn-blue  { background: var(--blue); color: #0d1117; }
-    .btn-blue:hover  { background: #79b8ff; text-decoration: none; }
-    .btn-ghost { background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
-    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
-    .btn-green { background: rgba(63,185,80,.13); border: 1px solid rgba(63,185,80,.35); color: var(--green); }
-    .btn-green:hover { background: rgba(63,185,80,.22); text-decoration: none; }
+    .btn-blue  { background: var(--blue); color: #fff; }
+    .btn-blue:hover  { background: #1d4ed8; text-decoration: none; }
+    .btn-green { background: var(--green-l); border: 1px solid #bbf7d0; color: var(--green); }
+    .btn-green:hover { background: #bbf7d0; text-decoration: none; }
 
     /* ── layout ── */
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
     section { padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
+    section:nth-child(even) { background: var(--surface2); }
     h2 {
       font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em;
       margin-bottom: 1rem; color: var(--text);
     }
-    h2 .num { color: var(--blue); font-size: .72em; margin-right: .3rem; }
     .lead { color: var(--muted); font-size: .95rem; margin-bottom: 2rem; max-width: 640px; }
 
     /* ── abstract ── */
     .abstract {
       background: var(--surface); border: 1px solid var(--border);
       border-left: 3px solid var(--blue); border-radius: var(--r);
-      padding: 1.75rem 2rem; font-size: .97rem; line-height: 1.8;
+      padding: 1.75rem 2rem; font-size: .97rem; line-height: 1.8; color: var(--text);
     }
     .abstract b { color: var(--blue); }
 
@@ -135,7 +138,7 @@
       font-size: 1.3rem; font-weight: 800; color: var(--blue);
       line-height: 1; flex-shrink: 0; min-width: 1.5rem;
     }
-    .contrib h4 { font-size: .93rem; font-weight: 700; margin-bottom: .25rem; }
+    .contrib h4 { font-size: .93rem; font-weight: 700; margin-bottom: .25rem; color: var(--text); }
     .contrib p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
 
     /* ── taxonomy cards ── */
@@ -143,22 +146,22 @@
     .tax-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r); padding: 1.3rem 1.4rem;
-      transition: border-color .18s, transform .18s;
+      transition: border-color .18s, box-shadow .18s, transform .18s;
     }
-    .tax-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .tax-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(37,99,235,.08); transform: translateY(-2px); }
     .tax-icon { font-size: 1.5rem; margin-bottom: .6rem; }
-    .tax-title { font-weight: 700; font-size: .97rem; margin-bottom: .4rem; }
+    .tax-title { font-weight: 700; font-size: .97rem; margin-bottom: .4rem; color: var(--text); }
     .tax-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; }
     .tax-pills { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .8rem; }
     .pill {
-      font-size: .72rem; font-weight: 500;
+      font-size: .72rem; font-weight: 600;
       padding: .18rem .55rem; border-radius: 20px;
-      background: rgba(88,166,255,.1); border: 1px solid rgba(88,166,255,.2); color: var(--blue);
+      background: var(--blue-l); border: 1px solid #bfdbfe; color: var(--blue);
     }
-    .pill-purple { background: rgba(210,168,255,.1); border-color: rgba(210,168,255,.2); color: var(--purple); }
-    .pill-orange { background: rgba(255,166,87,.1); border-color: rgba(255,166,87,.2); color: var(--orange); }
-    .pill-green  { background: rgba(63,185,80,.1);  border-color: rgba(63,185,80,.2);  color: var(--green); }
-    .pill-red    { background: rgba(255,123,114,.1); border-color: rgba(255,123,114,.2); color: var(--red); }
+    .pill-purple { background: var(--purple-l); border-color: #ddd6fe; color: var(--purple); }
+    .pill-orange { background: var(--orange-l); border-color: #fed7aa; color: var(--orange); }
+    .pill-green  { background: var(--green-l);  border-color: #bbf7d0; color: var(--green); }
+    .pill-red    { background: var(--red-l);    border-color: #fecaca; color: var(--red); }
 
     /* ── stats ── */
     .stats {
@@ -176,7 +179,7 @@
       background: var(--surface2); border: 1px solid var(--border);
       border-radius: var(--r); padding: 1.4rem 1.5rem;
       font-family: 'JetBrains Mono', monospace; font-size: .8rem;
-      color: var(--muted); line-height: 1.75; overflow-x: auto; white-space: pre;
+      color: #334155; line-height: 1.75; overflow-x: auto; white-space: pre;
     }
     .copy-btn {
       position: absolute; top: .7rem; right: .7rem;
@@ -188,10 +191,13 @@
 
     /* ── footer ── */
     footer {
-      background: var(--surface); padding: 2.5rem 1.5rem;
-      text-align: center; color: var(--muted); font-size: .83rem; line-height: 1.9;
+      background: var(--text); padding: 2.5rem 1.5rem;
+      text-align: center; color: #94a3b8; font-size: .83rem; line-height: 1.9;
     }
-    footer a { color: var(--blue); }
+    footer strong { color: #f1f5f9; }
+    footer em { color: #94a3b8; }
+    footer a { color: #93c5fd; }
+    footer a:hover { color: #bfdbfe; }
 
     /* ── reveal ── */
     .r { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
@@ -221,7 +227,7 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-inner">
-    <div class="tag">📄 Survey · Under Review · 2025</div>
+    <div class="tag">📄 Survey · Under Review · 2026</div>
     <h1>Say <em>No</em> Too Often:<br>Over-Refusals in Foundation Models</h1>
 
     <div class="authors">
@@ -239,7 +245,6 @@
     <div class="btns">
       <a href="https://www.researchgate.net/profile/Jiaxi-Yang-3/publication/403500829_Say_No_Too_Often_Over-Refusals_in_Foundation_Models/links/69d0781be8c973662964433d/Say-No-Too-Often-Over-Refusals-in-Foundation-Models.pdf" target="_blank" class="btn btn-blue">📄 Paper</a>
       <a href="https://github.com/abbottyanginchina/Awesome-Over-Refusal" target="_blank" class="btn btn-green">⭐ Awesome Paper List</a>
-      <a href="https://github.com/SurveyOverRefusalFoundationModels/surveyoverrefusalfoundationmodels.github.io" target="_blank" class="btn btn-ghost">💻 GitHub</a>
     </div>
   </div>
 </header>
@@ -402,7 +407,7 @@
   author  = {Yang, Jiaxi and Liu, Shicheng and Ansari, Abolfazl
              and Yang, Yuchen and Lee, Dongwon},
   journal = {arXiv preprint},
-  year    = {2025},
+  year    = {2026},
   note    = {Under review},
   url     = {https://github.com/abbottyanginchina/Awesome-Over-Refusal}
 }</div>
@@ -424,9 +429,9 @@
   <strong>Say No Too Often: Over-Refusals in Foundation Models</strong><br>
   Jiaxi Yang · Shicheng Liu · Abolfazl Ansari · Yuchen Yang · Dongwon Lee<br>
   <em>The Pennsylvania State University</em><br><br>
-  <a href="mailto:dongwon@psu.edu">dongwon@psu.edu</a> &nbsp;·&nbsp;
-  <a href="https://github.com/abbottyanginchina/Awesome-Over-Refusal" target="_blank">Paper List</a> &nbsp;·&nbsp;
-  <a href="https://github.com/SurveyOverRefusalFoundationModels/surveyoverrefusalfoundationmodels.github.io" target="_blank">GitHub</a>
+  <a href="mailto:jxy5513@psu.edu">jxy5513@psu.edu</a> (Jiaxi Yang) &nbsp;·&nbsp;
+  <a href="mailto:dongwon@psu.edu">dongwon@psu.edu</a> (Dongwon Lee) &nbsp;·&nbsp;
+  <a href="https://github.com/abbottyanginchina/Awesome-Over-Refusal" target="_blank">Paper List</a>
 </footer>
 
 <script>
